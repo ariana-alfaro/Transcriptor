@@ -14,7 +14,7 @@ VIDEO_EXTS = [".mp4", ".mov", ".avi", ".mkv", ".m4v", ".webm"]
 AUDIO_EXTS = [".mp3", ".wav", ".m4a", ".aac", ".flac", ".ogg", ".wma"]
 
 
-@st.cache_resource
+@st.cache_resource(max_entries=1)
 def cargar_modelo(nombre_modelo):
     return whisper.load_model(nombre_modelo)
 
@@ -70,7 +70,7 @@ uploaded_file = st.file_uploader(
 
 modelo_nombre = st.selectbox(
     "Modelo Whisper",
-    ["tiny", "base", "small", "medium", "large"],
+    ["tiny", "base"],
     index=1
 )
 
